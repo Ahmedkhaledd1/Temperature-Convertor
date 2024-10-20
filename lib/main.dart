@@ -23,11 +23,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? selectedFromUnit; // Holds the selected value for the "From" dropdown
-  String? selectedToUnit; // Holds the selected value for the "To" dropdown
-  TextEditingController fromController = TextEditingController(); // Controller for "From" TextField
-  TextEditingController toController = TextEditingController(); // Controller for "To" TextField
-  bool showImage = false; // To control image display
+  String? selectedFromUnit;
+  String? selectedToUnit;
+  TextEditingController fromController = TextEditingController();
+  TextEditingController toController = TextEditingController();
+  bool showImage = false;
 
   // Method to get image based on the selected "To" unit
   Widget getImageForUnit(String? unit) {
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       case "Celsius":
         return ClipOval(
           child: Image.asset(
-            'images/thermo.jpg',  // Image for Celsius
+            'images/thermo.jpg',
             width: 100,
             height: 100,
             fit: BoxFit.cover,
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       case "Fahrenheit":
         return ClipOval(
           child: Image.asset(
-            'images/ice.jpeg',  // Image for Fahrenheit
+            'images/ice.jpeg',
             width: 100,
             height: 100,
             fit: BoxFit.cover,
@@ -53,15 +53,54 @@ class _HomePageState extends State<HomePage> {
       case "Kelvin":
         return ClipOval(
           child: Image.asset(
-            'images/Kelvin.jpeg',  // Image for Kelvin
+            'images/Kelvin.jpeg',
             width: 100,
             height: 100,
             fit: BoxFit.cover,
           ),
         );
       default:
-        return SizedBox.shrink();  // Return an empty widget if no unit is selected
+        return SizedBox.shrink();
     }
+  }
+
+  // Method to perform the temperature conversion
+  void convertTemperature() {
+    double? input = double.tryParse(fromController.text);
+    if (input != null) {
+      double result;
+      if (selectedFromUnit == "Celsius") {
+        if (selectedToUnit == "Fahrenheit") {
+          result = input * 9 / 5 + 32;
+        } else if (selectedToUnit == "Kelvin") {
+          result = input + 273.15;
+        } else {
+          result = input; // Celsius to Celsius
+        }
+      } else if (selectedFromUnit == "Fahrenheit") {
+        if (selectedToUnit == "Celsius") {
+          result = (input - 32) * 5 / 9;
+        } else if (selectedToUnit == "Kelvin") {
+          result = (input - 32) * 5 / 9 + 273.15;
+        } else {
+          result = input; // Fahrenheit to Fahrenheit
+        }
+      } else if (selectedFromUnit == "Kelvin") {
+        if (selectedToUnit == "Celsius") {
+          result = input - 273.15;
+        } else if (selectedToUnit == "Fahrenheit") {
+          result = (input - 273.15) * 9 / 5 + 32;
+        } else {
+          result = input; // Kelvin to Kelvin
+        }
+      } else {
+        result = input; // Default case
+      }
+      toController.text = result.toString();
+    }
+    setState(() {
+      showImage = true; // Set to true to display the image
+    });
   }
 
   @override
@@ -127,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            SizedBox(height: 20), // Space between rows
+            SizedBox(height: 20),
 
             // Row for "To" dropdown and TextField
             Row(
@@ -159,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                     isExpanded: true,
                   ),
                 ),
-                SizedBox(width: 10), // Space between dropdown and TextField
+                SizedBox(width: 10),
                 Expanded(
                   flex: 3,
                   child: TextField(
@@ -168,31 +207,24 @@ class _HomePageState extends State<HomePage> {
                       labelText: "Converted value",
                       border: OutlineInputBorder(),
                     ),
-                    readOnly: true, // Read-only as it shows converted value
+                    readOnly: true,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20), // Space between rows
+            SizedBox(height: 20),
 
             // Convert Button
             Row(
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    double? input = double.tryParse(fromController.text);
-                    if (input != null) {
-                      double result = input * 2;  // Simple multiplication for now
-                      toController.text = result.toString();
-                    }
-                    setState(() {
-                      showImage = true;  // Set to true to display the image
-                    });
+                    convertTemperature(); // Call the conversion method
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30), // Adjust the radius here
+                      borderRadius: BorderRadius.circular(30),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   ),
@@ -205,11 +237,10 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            SizedBox(height: 20), // Space between button and image
+            SizedBox(height: 20),
 
             // Display the image if showImage is true
-            if (showImage)
-              getImageForUnit(selectedToUnit), // Display the image based on selected "To" unit
+            if (showImage) getImageForUnit(selectedToUnit),
           ],
         ),
       ),

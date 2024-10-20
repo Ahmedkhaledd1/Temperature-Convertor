@@ -1,8 +1,8 @@
-#Sun Oct 20 19:41:37 EEST 2024
-base.0=C\:\\Users\\dell\\StudioProjects\\first_flutter_application\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\dell\\StudioProjects\\first_flutter_application\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\dell\\StudioProjects\\first_flutter_application\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
-base.3=C\:\\Users\\dell\\StudioProjects\\first_flutter_application\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+#Sun Oct 20 20:46:14 EEST 2024
+base.0=C\:\\Users\\dell\\StudioProjects\\Temperature Convertor\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\dell\\StudioProjects\\Temperature Convertor\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\dell\\StudioProjects\\Temperature Convertor\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.3=C\:\\Users\\dell\\StudioProjects\\Temperature Convertor\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=1/classes.dex

@@ -4,7 +4,7 @@
             "outputFile": "com.example.first_flutter_application.app-mergeDebugResources-24:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dell\\StudioProjects\\first_flutter_application\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\dell\\StudioProjects\\Temperature Convertor\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

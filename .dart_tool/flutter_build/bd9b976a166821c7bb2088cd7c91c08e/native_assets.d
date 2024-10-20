@@ -1,0 +1,1 @@
+ C:\\Users\\dell\\StudioProjects\\Temperature\ Convertor\\.dart_tool\\flutter_build\\bd9b976a166821c7bb2088cd7c91c08e\\native_assets.yaml: 
